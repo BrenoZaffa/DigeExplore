@@ -1,4 +1,7 @@
+import 'package:digeexplore/pages/page_home.dart';
+import 'package:digeexplore/pages/page_minigames.dart';
 import 'package:digeexplore/pages/page_video_conteudo.dart';
+import 'package:digeexplore/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 class PageInit extends StatelessWidget {
@@ -7,12 +10,16 @@ class PageInit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DigeExplore',
+      // title: 'DigeExplore',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: const PageVideoConteudo(),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.red,
+      // ),
+      home: const SplashPage(),
+      routes: {
+        "/home": (context) => const PageHome(),
+        "/minigames": (context) => const PageMiniGames(),
+      },
     );
   }
 }

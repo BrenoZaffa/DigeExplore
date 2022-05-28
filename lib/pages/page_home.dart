@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class PageHome extends StatelessWidget {
@@ -7,46 +5,51 @@ class PageHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    irParaMinigames() {
+      Navigator.pushNamed(context, '/minigames');
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xff073B4C),
       body: Padding(
-        padding: const EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 60),
         child: Stack(
           children: [
             Column(
               children: [
                 const Text(
-                  "Vamos aprender sobre o",
+                  "VAMOS APRENDER SOBRE O",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
                 const Text(
-                  "Sistema Digestório",
+                  "SISTEMA DIGESTÓRIO",
                   style: TextStyle(
                     fontSize: 26,
                     color: Color(0XFF06D6A0),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 100),
+                  padding: const EdgeInsets.only(top: 70),
                   child: Container(
                     decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50.0),
-                          topRight: Radius.circular(50.0),
-                        )),
-                    width: 1000,
-                    height: 567,
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50.0),
+                        topRight: Radius.circular(50.0),
+                      ),
+                    ),
+                    // width: 600,
+                    // height: 567,
                     child: Center(
                       child: Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.only(top: 120),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: irParaMinigames,
                               child: Container(
                                 width: 300,
                                 height: 80,
@@ -61,7 +64,7 @@ class PageHome extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 12, horizontal: 2),
                                     child: Text(
-                                      "Jogar",
+                                      "JOGAR",
                                       style: TextStyle(
                                         color: Color(0xFFEF476F),
                                         fontSize: 20,
@@ -74,7 +77,7 @@ class PageHome extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 30),
+                            padding: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
                               onTap: () {},
                               child: Container(
@@ -91,7 +94,7 @@ class PageHome extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 12, horizontal: 2),
                                     child: Text(
-                                      "Ranking",
+                                      "RANKING",
                                       style: TextStyle(
                                         color: Color(0xFF05FF69),
                                         fontSize: 20,
@@ -104,7 +107,7 @@ class PageHome extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 30),
+                            padding: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
                               onTap: () {},
                               child: Container(
@@ -121,7 +124,7 @@ class PageHome extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 12, horizontal: 2),
                                     child: Text(
-                                      "Ajuda",
+                                      "AJUDA",
                                       style: TextStyle(
                                         color: Color(0xFF3A86FF),
                                         fontSize: 20,
@@ -134,7 +137,7 @@ class PageHome extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 30),
+                            padding: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
                               onTap: () {},
                               child: Container(
@@ -151,7 +154,7 @@ class PageHome extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 12, horizontal: 2),
                                     child: Text(
-                                      "Sobre",
+                                      "SOBRE",
                                       style: TextStyle(
                                         color: Color(0xFF8F00FF),
                                         fontSize: 20,
@@ -175,10 +178,13 @@ class PageHome extends StatelessWidget {
               child: Container(
                 width: 150,
                 height: 150,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 ),
-                child: Image.asset("assets/images/sistema_digestorio.png"),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset("assets/images/sistema_digestorio.png"),
+                ),
               ),
             ),
           ],
