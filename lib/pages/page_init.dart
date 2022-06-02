@@ -1,4 +1,5 @@
 import 'package:digeexplore/pages/page_home.dart';
+import 'package:digeexplore/pages/page_jogo_memoria.dart';
 import 'package:digeexplore/pages/page_minigames.dart';
 import 'package:digeexplore/pages/page_video_conteudo.dart';
 import 'package:digeexplore/pages/splash_page.dart';
@@ -19,6 +20,7 @@ class PageInit extends StatelessWidget {
       routes: {
         "/home": (context) => const PageHome(),
         "/minigames": (context) => const PageMiniGames(),
+        "/jogo_memoria": (context) => const PageJogoMemoria(),
       },
     );
   }

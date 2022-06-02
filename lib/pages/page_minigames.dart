@@ -1,9 +1,5 @@
 import 'package:digeexplore/widgets/widget_minigame.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PageMiniGames extends StatelessWidget {
   const PageMiniGames({Key? key}) : super(key: key);
@@ -25,16 +21,19 @@ class PageMiniGames extends StatelessWidget {
               minigame: 'IDENTIFIQUE OS ÓRGÃOS',
               corDestaque: 0xffFF006D,
               imagemDestaque: 'assets/images/sistemaDigestorioImagem.png',
+              jogoSelecionado: '/identifique_orgaos',
             ),
             WidgetMinigame(
               minigame: 'JOGO DA MEMÓRIA',
               corDestaque: 0xffFF7D00,
               imagemDestaque: 'assets/images/jogoMemoria.png',
+              jogoSelecionado: '/jogo_memoria',
             ),
             WidgetMinigame(
               minigame: 'QUIZ',
               corDestaque: 0xff8F00FF,
               imagemDestaque: 'assets/images/quiz.png',
+              jogoSelecionado: '/quiz',
             ),
           ],
         ),
