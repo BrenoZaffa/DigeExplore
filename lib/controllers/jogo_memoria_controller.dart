@@ -32,4 +32,8 @@ class JogoMemoriaController {
         EnumOrgaos.values[Random().nextInt(EnumOrgaos.values.length - 1)];
     _orgaos = getOrgaosRandomicos();
   }
+
+  bool isOrgaoCorreto(EnumOrgaos orgao) {
+    return orgao == _orgaoCorreto;
+  }
 }

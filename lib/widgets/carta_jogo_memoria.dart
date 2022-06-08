@@ -52,8 +52,8 @@ class _CartaJogoMemoriaState extends State<CartaJogoMemoria>
   Container getCarta(angulo) {
     if (angulo > 0.5 * pi) {
       return Container(
-        width: 180,
-        height: 200,
+        width: 150,
+        height: 170,
         decoration: BoxDecoration(
           border: Border.all(
             color: Color(widget.orgao.getColor()),
@@ -70,8 +70,8 @@ class _CartaJogoMemoriaState extends State<CartaJogoMemoria>
     }
 
     return Container(
-      width: 180,
-      height: 200,
+      width: 150,
+      height: 170,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.white,

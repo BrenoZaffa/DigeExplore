@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:digeexplore/controllers/jogo_memoria_controller.dart';
 import 'package:digeexplore/enums/enum_orgaos.dart';
 import 'package:digeexplore/widgets/carta_jogo_memoria.dart';
@@ -22,13 +20,7 @@ class _JogoMemoriaState extends State<JogoMemoria> {
   }
 
   void selecaoCarta(EnumOrgaos orgao) {
-    if (orgao != _jogoMemoriaController.orgaoCorreto) {
-      SnackBar snackBar = const SnackBar(
-        content: Text('Tente novamente!'),
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    } else {
+    if (_jogoMemoriaController.isOrgaoCorreto(orgao)) {
       SnackBar snackBar = const SnackBar(
         content: Text('Acertou! Parabéns!'),
       );
@@ -41,6 +33,12 @@ class _JogoMemoriaState extends State<JogoMemoria> {
       //   _jogoMemoriaController.reset(),
       // );
       // setState(() {});
+    } else {
+      SnackBar snackBar = const SnackBar(
+        content: Text('Tente novamente!'),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
@@ -56,13 +54,13 @@ class _JogoMemoriaState extends State<JogoMemoria> {
               Text(
                 'ENCONTRE ',
                 style: GoogleFonts.poppins(
-                  fontSize: 24,
+                  fontSize: 20,
                 ),
               ),
               Text(
                 _jogoMemoriaController.orgaoCorreto.name,
                 style: GoogleFonts.poppins(
-                  fontSize: 24,
+                  fontSize: 20,
                   color: Color(_jogoMemoriaController.orgaoCorreto.getColor()),
                 ),
               ),
