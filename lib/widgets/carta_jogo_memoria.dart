@@ -23,7 +23,6 @@ class _CartaJogoMemoriaState extends State<CartaJogoMemoria>
   void flipCard() {
     if (!animation.isAnimating) {
       animation.forward();
-      Timer(const Duration(milliseconds: 2000), () => animation.reverse());
     }
   }
 
@@ -35,6 +34,7 @@ class _CartaJogoMemoriaState extends State<CartaJogoMemoria>
       duration: const Duration(milliseconds: 850),
     );
     flipCard();
+    Timer(const Duration(milliseconds: 2000), () => animation.reverse());
   }
 
   @override
@@ -44,8 +44,12 @@ class _CartaJogoMemoriaState extends State<CartaJogoMemoria>
   }
 
   Future<void> selecionaCarta() async {
-    await widget.onTap(widget.orgao);
     flipCard();
+    Timer(
+        const Duration(milliseconds: 2000),
+        () =>
+            animation.reverse().whenComplete(() => widget.onTap(widget.orgao)));
+    // await widget.onTap(widget.orgao);
     // setState(() {});
   }
 
