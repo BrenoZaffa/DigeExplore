@@ -5,7 +5,7 @@ class WidgetCabecalhoJogo extends StatelessWidget {
   final int quantidadeVidas;
   const WidgetCabecalhoJogo({
     Key? key,
-    this.quantidadeVidas = 1,
+    required this.quantidadeVidas,
   }) : super(key: key);
 
   @override

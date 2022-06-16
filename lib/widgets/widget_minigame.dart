@@ -18,11 +18,128 @@ class WidgetMinigame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     irParaJogo() {
-      Navigator.pushNamed(context, jogoSelecionado);
+      Navigator.pushReplacementNamed(context, jogoSelecionado);
+    }
+
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            insetPadding: const EdgeInsets.all(10),
+            contentPadding: const EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+            ),
+            content: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF8F00FF),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(35),
+                      topRight: Radius.circular(35),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Text(
+                      'ESCOLHA A DIFICULDADE',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    left: 8,
+                    right: 8,
+                  ),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(double.infinity - 10, 70),
+                      primary: const Color(0xFFFF006D),
+                      shape: const StadiumBorder(),
+                      side: const BorderSide(
+                        color: Color(0xFFFF006D),
+                      ),
+                    ),
+                    onPressed: irParaJogo,
+                    child: Text(
+                      'FÁCIL',
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    left: 8,
+                    right: 8,
+                  ),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(double.infinity - 10, 70),
+                      primary: const Color(0xFFFF7D00),
+                      shape: const StadiumBorder(),
+                      side: const BorderSide(
+                        color: Color(0xFFFF7D00),
+                      ),
+                    ),
+                    onPressed: irParaJogo,
+                    child: Text(
+                      'MÉDIO',
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    left: 8,
+                    right: 8,
+                  ),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(double.infinity - 10, 70),
+                      primary: const Color(0xFF8F00FF),
+                      shape: const StadiumBorder(),
+                      side: const BorderSide(
+                        color: Color(0xFF8F00FF),
+                      ),
+                    ),
+                    onPressed: irParaJogo,
+                    child: Text(
+                      'DÍFICIL',
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
     }
 
     return InkWell(
-      onTap: irParaJogo,
+      onTap: _showMyDialog,
       child: Container(
         height: MediaQuery.of(context).size.height * 0.26,
         decoration: BoxDecoration(
@@ -49,7 +166,7 @@ class WidgetMinigame extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 24,
+                    fontSize: 22,
                   ),
                 ),
               ),
@@ -57,7 +174,7 @@ class WidgetMinigame extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: SizedBox(
-                height: 100,
+                height: 90,
                 child: Image.asset(
                   imagemDestaque,
                   fit: BoxFit.fill,
