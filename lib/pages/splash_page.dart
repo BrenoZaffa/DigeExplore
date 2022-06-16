@@ -9,7 +9,16 @@ class SplashPage extends StatelessWidget {
     Future<void> irParaProximaPage() async {
       await Future.delayed(const Duration(seconds: 3));
 
-      Navigator.pushReplacementNamed(context, '/home');
+      // Navigator.pushReplacementNamed(context, '/video_conteudo');
+      Navigator.of(context).pushNamed(
+        '/video_conteudo',
+        arguments: {
+          'title': "Sistema Digetório",
+          'color': "0xff073B4C",
+          'diretory': "assets/videos/video_conteudo.mp4",
+          'page': "splash_page",
+        },
+      );
     }
 
     irParaProximaPage();

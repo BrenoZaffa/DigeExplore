@@ -13,6 +13,8 @@ dependencies:
   provider: ^5.0.0
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
+  video_player: ^2.4.4
+  sqflite: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +34,6 @@ flutter:
     - assets/images/estomago.png
     - assets/images/figado.png
     - assets/images/intestinos.png
+    - assets/videos/video_conteudo.mp4
+    - assets/videos/tutorial_memoria.mp4
+    - assets/videos/tutorial_quiz.mp4

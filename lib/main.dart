@@ -1,9 +1,15 @@
 import 'package:digeexplore/pages/page_init.dart';
+import 'package:digeexplore/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   runApp(
-    const PageInit(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserRepository()),
+      ],
+      child: PageInit(),
+    ),
   );
 }

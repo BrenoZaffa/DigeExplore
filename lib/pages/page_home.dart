@@ -9,6 +9,10 @@ class PageHome extends StatelessWidget {
       Navigator.pushNamed(context, '/minigames');
     }
 
+    irParaSobre() {
+      Navigator.pushNamed(context, '/sobre');
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xff073B4C),
       body: Padding(
@@ -34,13 +38,10 @@ class PageHome extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 70),
                   child: Container(
+                    height: MediaQuery.of(context).size.height * 0.7,
                     decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50.0),
-                        topRight: Radius.circular(50.0),
-                      ),
-                    ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
                     // width: 600,
                     // height: 567,
                     child: Center(
@@ -139,7 +140,7 @@ class PageHome extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: irParaSobre,
                               child: Container(
                                 width: 300,
                                 height: 80,
