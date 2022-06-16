@@ -15,6 +15,7 @@ dependencies:
   google_fonts: ^2.1.0
   video_player: ^2.4.4
   sqflite: ^2.0.0+3
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +28,11 @@ flutter:
   assets:
     - assets/images/sistema_digestorio.png
     - assets/images/sistemaDigestorioImagem.png
+    - assets/images/sistemaDigestorioDemarcadoBoca.png
+    - assets/images/sistemaDigestorioDemarcadoEsofago.png
+    - assets/images/sistemaDigestorioDemarcadoEstomago.png
+    - assets/images/sistemaDigestorioDemarcadoFigado.png
+    - assets/images/sistemaDigestorioDemarcadoIntestinos.png
     - assets/images/jogoMemoria.png
     - assets/images/quiz.png
     - assets/images/memoria.png

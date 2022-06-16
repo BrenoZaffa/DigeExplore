@@ -1,15 +1,15 @@
-import 'package:digeexplore/widgets/jogo_memoria.dart';
+import 'package:digeexplore/widgets/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PageJogoMemoria extends StatefulWidget {
-  const PageJogoMemoria({Key? key}) : super(key: key);
+class PageQuiz extends StatefulWidget {
+  const PageQuiz({Key? key}) : super(key: key);
 
   @override
-  State<PageJogoMemoria> createState() => _PageJogoMemoriaState();
+  State<PageQuiz> createState() => _PageQuizState();
 }
 
-class _PageJogoMemoriaState extends State<PageJogoMemoria> {
+class _PageQuizState extends State<PageQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _PageJogoMemoriaState extends State<PageJogoMemoria> {
               Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: Color(0xFFFF7D00),
+                  color: Color(0xFF8F00FF),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(35),
                     topRight: Radius.circular(35),
@@ -42,7 +42,7 @@ class _PageJogoMemoriaState extends State<PageJogoMemoria> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'JOGO DA MEMÓRIA',
+                    'QUIZ',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: Colors.white,
@@ -52,7 +52,7 @@ class _PageJogoMemoriaState extends State<PageJogoMemoria> {
                   ),
                 ),
               ),
-              const JogoMemoria(),
+              const Quiz(),
             ],
           ),
         ),

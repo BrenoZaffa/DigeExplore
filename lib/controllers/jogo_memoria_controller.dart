@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:digeexplore/class/controlar_jogo.dart';
 import 'package:digeexplore/enums/enum_dificuldade.dart';
 import 'package:digeexplore/enums/enum_orgaos.dart';
-import 'package:flutter/cupertino.dart';
 
 class JogoMemoriaController extends ControlarJogo {
   late EnumOrgaos _orgaoCorreto;

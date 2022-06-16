@@ -1,9 +1,11 @@
 import 'package:digeexplore/class/finalizar_jogo_argument.dart';
 import 'package:digeexplore/pages/page_final_jogo.dart';
 import 'package:digeexplore/pages/page_home.dart';
+import 'package:digeexplore/pages/page_identifique_orgaos.dart';
 import 'package:digeexplore/pages/page_jogo_memoria.dart';
 import 'package:digeexplore/pages/page_minigames.dart';
 import 'package:digeexplore/pages/page_sobre.dart';
+import 'package:digeexplore/pages/page_quiz.dart';
 import 'package:digeexplore/pages/page_video_conteudo.dart';
 import 'package:digeexplore/pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,8 @@ class PageInit extends StatelessWidget {
         "/home": (context) => const PageHome(),
         "/minigames": (context) => const PageMiniGames(),
         "/jogo_memoria": (context) => const PageJogoMemoria(),
+        "/quiz": (context) => const PageQuiz(),
+        "/identifique_orgaos": (context) => const PageIdentifiqueOrgaos(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/final_jogo') {

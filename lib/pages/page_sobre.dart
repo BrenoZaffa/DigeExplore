@@ -57,7 +57,7 @@ class PageSobre extends StatelessWidget {
                             "DESENVOLVIDO NA DISCIPLINA DE PROJETO DE SOFTWARE UTFPR, MINISTRADO PELA PROFESSORA ELIANA CLAUDIA MAYUMI ISHIKAWA. ESTE JOGO TEM O OBJETIVO EM AUXILIAR A EDUCAÇÃO COM FOCO NO SISTEMA DIGESTÓRIO, PARA CRIANÇAS COM DEFICIÊNCIA INTELECTUAL.",
                             textAlign: TextAlign.justify,
                             style: GoogleFonts.poppins(
-                              fontSize: 23,
+                              fontSize: 18,
                             ),
                           ),
                         ],
@@ -106,7 +106,7 @@ class PageSobre extends StatelessWidget {
                             "Breno Francisco Zaffalon\nHenrick Santiago\nAlexandre Vieira",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
-                              fontSize: 23,
+                              fontSize: 20,
                             ),
                           ),
                         ],

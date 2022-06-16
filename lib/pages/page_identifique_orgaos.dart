@@ -1,15 +1,15 @@
-import 'package:digeexplore/widgets/jogo_memoria.dart';
+import 'package:digeexplore/widgets/identifique_orgaos.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PageJogoMemoria extends StatefulWidget {
-  const PageJogoMemoria({Key? key}) : super(key: key);
+class PageIdentifiqueOrgaos extends StatefulWidget {
+  const PageIdentifiqueOrgaos({Key? key}) : super(key: key);
 
   @override
-  State<PageJogoMemoria> createState() => _PageJogoMemoriaState();
+  State<PageIdentifiqueOrgaos> createState() => _PageIdentifiqueOrgaosState();
 }
 
-class _PageJogoMemoriaState extends State<PageJogoMemoria> {
+class _PageIdentifiqueOrgaosState extends State<PageIdentifiqueOrgaos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _PageJogoMemoriaState extends State<PageJogoMemoria> {
               Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: Color(0xFFFF7D00),
+                  color: Color(0xFFFF006D),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(35),
                     topRight: Radius.circular(35),
@@ -42,17 +42,17 @@ class _PageJogoMemoriaState extends State<PageJogoMemoria> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'JOGO DA MEMÓRIA',
+                    'IDENTIFIQUE OS ÓRGÃOS',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 26,
+                      fontSize: 23,
                     ),
                   ),
                 ),
               ),
-              const JogoMemoria(),
+              const IdentiqueOrgaos(),
             ],
           ),
         ),

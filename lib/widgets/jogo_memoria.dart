@@ -20,11 +20,6 @@ class _JogoMemoriaState extends State<JogoMemoria> {
   List<EnumOrgaos> selecionadosErrado = [];
   late int tempoFinal;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
       _jogoMemoriaController.finalizarFase(1);
@@ -67,7 +62,8 @@ class _JogoMemoriaState extends State<JogoMemoria> {
           )
         : Container(
             width: 150,
-            height: 170,
+            // height: 170,
+            height: 220,
             decoration: BoxDecoration(
               border: Border.all(
                 color: const Color(0xFFDDDDDD),
@@ -90,14 +86,19 @@ class _JogoMemoriaState extends State<JogoMemoria> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TempoJogo(
-            onTempoTerminado: atribuirTempo,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 7),
-            child: WidgetCabecalhoJogo(
-              quantidadeVidas: _jogoMemoriaController.quantidadeVidas,
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TempoJogo(
+                onTempoTerminado: atribuirTempo,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 7),
+                child: WidgetCabecalhoJogo(
+                  quantidadeVidas: _jogoMemoriaController.quantidadeVidas,
+                ),
+              ),
+            ],
           ),
           Column(
             children: [
@@ -124,6 +125,7 @@ class _JogoMemoriaState extends State<JogoMemoria> {
                 ),
               ),
               Container(
+                height: 520,
                 decoration: const BoxDecoration(
                   color: Color(0xFFF2F2F2),
                   borderRadius: BorderRadius.only(
@@ -132,9 +134,8 @@ class _JogoMemoriaState extends State<JogoMemoria> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                    bottom: 10,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 30,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +158,7 @@ class _JogoMemoriaState extends State<JogoMemoria> {
                             else
                               const SizedBox(
                                 width: 150,
-                                height: 170,
+                                height: 220,
                               ),
                           ],
                         ),
