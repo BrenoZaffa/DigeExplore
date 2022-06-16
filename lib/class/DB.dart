@@ -16,7 +16,7 @@ class DB {
   _initDatabase() async {
     return await openDatabase(
       join(await getDatabasesPath(), 'digeexplore.db'),
-      version: 1,
+      version: 2,
       onCreate: _onCreate,
     );
   }
@@ -24,6 +24,7 @@ class DB {
   _onCreate(db, version) async {
     await db.execute(_partida);
     await db.execute(_usuario);
+    await db.insert('usuario', {'nome': ''});
   }
 
   String get _usuario => '''

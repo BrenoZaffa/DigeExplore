@@ -38,7 +38,7 @@ class PageHome extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 70),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
+                    height: MediaQuery.of(context).size.height * 0.69,
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(50))),
