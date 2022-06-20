@@ -71,6 +71,7 @@ class PageInit extends StatelessWidget {
               return PageFinalJogo(
                 jogoFinalizado: args.jogoFinalizado,
                 pontuacao: args.pontuacao,
+                situacao: args.situacao,
               );
             },
           );

@@ -20,9 +20,9 @@ class _QuizState extends State<Quiz> {
   List<String> alternativasErradas = [];
   late int tempoFinal;
 
-  irParaPontuacaoFinal(int pontuacao) {
+  irParaPontuacaoFinal(int pontuacao, int situacao) {
     Navigator.pushReplacementNamed(context, '/final_jogo',
-        arguments: FinalizarJogoArgument('QUIZ', pontuacao));
+        arguments: FinalizarJogoArgument('QUIZ', pontuacao, situacao));
   }
 
   @override
@@ -36,6 +36,7 @@ class _QuizState extends State<Quiz> {
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
       _quizController.finalizarFase(1, 0, 0);
+      irParaPontuacaoFinal(0, 2);
     }
 
     const tempoMaximo = 120;
@@ -56,17 +57,21 @@ class _QuizState extends State<Quiz> {
         pontos,
         _quizController.dificuldade.getIdDificuldade(),
       );
-      irParaPontuacaoFinal(pontos);
+      irParaPontuacaoFinal(pontos, 1);
     } else {
-      setState(() {
-        alternativasErradas.add(alternativa);
-        _quizController.descontaVida();
-      });
-      SnackBar snackBar = const SnackBar(
-        content: Text('Tente novamente!'),
-      );
+      if (_quizController.quantidadeVidas > 1) {
+        setState(() {
+          alternativasErradas.add(alternativa);
+          _quizController.descontaVida();
+        });
+        SnackBar snackBar = const SnackBar(
+          content: Text('Tente novamente!'),
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        irParaPontuacaoFinal(0, 0);
+      }
     }
   }
 

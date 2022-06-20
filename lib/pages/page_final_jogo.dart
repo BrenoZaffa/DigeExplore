@@ -7,11 +7,13 @@ import '../repositories/user_repository.dart';
 class PageFinalJogo extends StatelessWidget {
   final String jogoFinalizado;
   final int pontuacao;
+  final int situacao;
 
   const PageFinalJogo({
     Key? key,
     required this.jogoFinalizado,
     required this.pontuacao,
+    required this.situacao,
   }) : super(key: key);
 
   int getColor() {
@@ -75,7 +77,12 @@ class PageFinalJogo extends StatelessWidget {
                     child: Center(
                       heightFactor: 2,
                       child: Text(
-                        'Fase Concluída!',
+                        (situacao == 1
+                            ? 'Fase Concluída!'
+                            : "Não foi dessa vez!\n\n" +
+                                (situacao == 0
+                                    ? "Acabou suas vidas"
+                                    : "Acabou seu tempo")),
                         style: GoogleFonts.poppins(
                           // color: Colors.white,01BEFE
                           fontWeight: FontWeight.bold,
@@ -91,7 +98,9 @@ class PageFinalJogo extends StatelessWidget {
                 child: Center(
                   heightFactor: 2,
                   child: Text(
-                    'Parabéns, continue assim!!! \n' + userRepository.nome,
+                    (situacao == 1
+                        ? 'Parabéns, continue assim!!!\n' + userRepository.nome
+                        : 'Tente novamente!'),
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF118AB2),

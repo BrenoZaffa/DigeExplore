@@ -25,9 +25,9 @@ class _IdentiqueOrgaosState extends State<IdentiqueOrgaos> {
   List<EnumOrgaosIdentificar> selecionadosErrado = [];
   late int tempoFinal = 0;
 
-  irParaPontuacaoFinal(int pontuacao) {
+  irParaPontuacaoFinal(int pontuacao, int situacao) {
     Navigator.pushReplacementNamed(context, '/final_jogo',
-        arguments: FinalizarJogoArgument('CAÇA-ORGÃOS', pontuacao));
+        arguments: FinalizarJogoArgument('CAÇA-ORGÃOS', pontuacao, situacao));
   }
 
   @override
@@ -42,6 +42,7 @@ class _IdentiqueOrgaosState extends State<IdentiqueOrgaos> {
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
       _identifiqueOrgaosController.finalizarFase(1, 0, 0);
+      irParaPontuacaoFinal(0, 2);
     }
 
     const tempoMaximo = 120;
@@ -63,17 +64,21 @@ class _IdentiqueOrgaosState extends State<IdentiqueOrgaos> {
         pontos,
         _identifiqueOrgaosController.dificuldade.getIdDificuldade(),
       );
-      irParaPontuacaoFinal(pontos);
+      irParaPontuacaoFinal(pontos, 1);
     } else {
-      setState(() {
-        selecionadosErrado.add(orgao);
-        _identifiqueOrgaosController.descontaVida();
-      });
-      SnackBar snackBar = const SnackBar(
-        content: Text('Tente novamente!'),
-      );
+      if (_identifiqueOrgaosController.quantidadeVidas > 1) {
+        setState(() {
+          selecionadosErrado.add(orgao);
+          _identifiqueOrgaosController.descontaVida();
+        });
+        SnackBar snackBar = const SnackBar(
+          content: Text('Tente novamente!'),
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        irParaPontuacaoFinal(0, 0);
+      }
     }
   }
 

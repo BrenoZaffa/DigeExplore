@@ -22,9 +22,10 @@ class _JogoMemoriaState extends State<JogoMemoria> {
   List<EnumOrgaos> selecionadosErrado = [];
   late int tempoFinal;
 
-  irParaPontuacaoFinal(int pontuacao) {
+  irParaPontuacaoFinal(int pontuacao, int situacao) {
     Navigator.pushReplacementNamed(context, '/final_jogo',
-        arguments: FinalizarJogoArgument('JOGO DA MEMÓRIA', pontuacao));
+        arguments:
+            FinalizarJogoArgument('JOGO DA MEMÓRIA', pontuacao, situacao));
   }
 
   @override
@@ -38,6 +39,7 @@ class _JogoMemoriaState extends State<JogoMemoria> {
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
       _jogoMemoriaController.finalizarFase(1, 0, 0);
+      irParaPontuacaoFinal(0, 2);
     }
 
     const tempoMaximo = 120;
@@ -59,17 +61,21 @@ class _JogoMemoriaState extends State<JogoMemoria> {
         pontos,
         _jogoMemoriaController.dificuldade.getIdDificuldade(),
       );
-      irParaPontuacaoFinal(pontos);
+      irParaPontuacaoFinal(pontos, 1);
     } else {
-      setState(() {
-        selecionadosErrado.add(orgao);
-        _jogoMemoriaController.descontaVida();
-      });
-      SnackBar snackBar = const SnackBar(
-        content: Text('Tente novamente!'),
-      );
+      if (_jogoMemoriaController.quantidadeVidas > 1) {
+        setState(() {
+          selecionadosErrado.add(orgao);
+          _jogoMemoriaController.descontaVida();
+        });
+        SnackBar snackBar = const SnackBar(
+          content: Text('Tente novamente!'),
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        irParaPontuacaoFinal(0, 0);
+      }
     }
   }
 
