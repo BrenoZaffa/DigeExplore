@@ -56,14 +56,20 @@ class _PageVideoConteudo extends State<PageVideoConteudo> {
       case "splash_page":
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => PageNome()));
+        // Navigator.of(context).pushReplacement(
+        //     MaterialPageRoute(builder: (context) => PageNome()));
         break;
       case "page_ajuda":
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => PageAjuda()));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => PageAjuda()));
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => PageAjuda()));
         break;
       case "page_ajuda_video_aula":
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => PageAjuda()));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => PageAjuda()));
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => PageAjuda()));
         break;
       case "/identifique_orgaos":
       case "/jogo_memoria":
