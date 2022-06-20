@@ -161,7 +161,7 @@ class _PageAjudaState extends State<PageAjuda> {
                                   '/video_conteudo',
                                   arguments: {
                                     'title': "CAÇA-ORGÃO",
-                                    'color': "0xff073B4C",
+                                    'color': "0xffFF006D",
                                     'diretory':
                                         "assets/videos/tutorial_caca_orgao.mp4",
                                     'page': "page_ajuda",
