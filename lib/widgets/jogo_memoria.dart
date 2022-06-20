@@ -9,20 +9,35 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class JogoMemoria extends StatefulWidget {
-  const JogoMemoria({Key? key}) : super(key: key);
+  final EnumDificuldade dificuldade;
+  const JogoMemoria({Key? key, required this.dificuldade}) : super(key: key);
 
   @override
   State<JogoMemoria> createState() => _JogoMemoriaState();
 }
 
 class _JogoMemoriaState extends State<JogoMemoria> {
-  final _jogoMemoriaController = JogoMemoriaController(EnumDificuldade.dificil);
+  late var _jogoMemoriaController =
+      JogoMemoriaController(EnumDificuldade.facil);
   List<EnumOrgaos> selecionadosErrado = [];
   late int tempoFinal;
 
+  irParaPontuacaoFinal(int pontuacao) {
+    Navigator.pushReplacementNamed(context, '/final_jogo',
+        arguments: FinalizarJogoArgument('JOGO DA MEMÓRIA', pontuacao));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _jogoMemoriaController = JogoMemoriaController(widget.dificuldade);
+    });
+  }
+
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
-      _jogoMemoriaController.finalizarFase(1);
+      _jogoMemoriaController.finalizarFase(1, 0, 0);
     }
 
     const tempoMaximo = 120;
@@ -32,14 +47,19 @@ class _JogoMemoriaState extends State<JogoMemoria> {
 
   void selecaoCarta(EnumOrgaos orgao) {
     if (_jogoMemoriaController.isOrgaoCorreto(orgao)) {
-      _jogoMemoriaController.finalizarFase(tempoFinal);
       SnackBar snackBar = const SnackBar(
         content: Text('Acertou! Parabéns!'),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      irParaPontuacaoFinal(
-          _jogoMemoriaController.calcularPontuacao(tempoFinal));
+      int pontos = _jogoMemoriaController.calcularPontuacao(tempoFinal);
+
+      _jogoMemoriaController.finalizarFase(
+        2,
+        pontos,
+        _jogoMemoriaController.dificuldade.getIdDificuldade(),
+      );
+      irParaPontuacaoFinal(pontos);
     } else {
       setState(() {
         selecionadosErrado.add(orgao);
@@ -73,11 +93,6 @@ class _JogoMemoriaState extends State<JogoMemoria> {
               color: const Color(0xFFDDDDDD),
             ),
           );
-  }
-
-  irParaPontuacaoFinal(int pontuacao) {
-    Navigator.pushReplacementNamed(context, '/final_jogo',
-        arguments: FinalizarJogoArgument('JOGO DA MEMÓRIA', pontuacao));
   }
 
   @override

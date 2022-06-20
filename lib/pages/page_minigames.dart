@@ -18,7 +18,7 @@ class PageMiniGames extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
             WidgetMinigame(
-              minigame: 'IDENTIFIQUE OS ÓRGÃOS',
+              minigame: 'CAÇA-ORGÃOS',
               corDestaque: 0xffFF006D,
               imagemDestaque: 'assets/images/sistemaDigestorioImagem.png',
               jogoSelecionado: '/identifique_orgaos',

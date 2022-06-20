@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../repositories/user_repository.dart';
 
 class PageFinalJogo extends StatelessWidget {
   final String jogoFinalizado;
@@ -16,7 +19,7 @@ class PageFinalJogo extends StatelessWidget {
       return 0xFFFF7D00;
     } else if (jogoFinalizado == 'QUIZ') {
       return 0xFF8F00FF;
-    } else if (jogoFinalizado == 'IDENTIFIQUE OS ÓRGÃOS') {
+    } else if (jogoFinalizado == 'CAÇA-ORGÃOS') {
       return 0xFFFF006D;
     }
 
@@ -25,6 +28,7 @@ class PageFinalJogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userRepository = context.watch<UserRepository>();
     return Scaffold(
       backgroundColor: const Color(0xff073B4C),
       body: Padding(
@@ -87,7 +91,7 @@ class PageFinalJogo extends StatelessWidget {
                 child: Center(
                   heightFactor: 2,
                   child: Text(
-                    'Parabéns, continue assim!!!',
+                    'Parabéns, continue assim!!! \n' + userRepository.nome,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF118AB2),

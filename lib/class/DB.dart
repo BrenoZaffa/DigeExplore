@@ -16,7 +16,7 @@ class DB {
   _initDatabase() async {
     return await openDatabase(
       join(await getDatabasesPath(), 'digeexplore.db'),
-      version: 2,
+      version: 3,
       onCreate: _onCreate,
     );
   }
@@ -39,7 +39,7 @@ class DB {
       idPartida INTEGER PRIMARY KEY AUTOINCREMENT,
       idMinigame INTEGER,
       Dificuldade INTEGER,
-      Pontuacao_Total REAL
+      Pontuacao_Total INTEGER
     );
   ''';
 }

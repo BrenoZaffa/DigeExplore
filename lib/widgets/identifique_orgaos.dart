@@ -10,21 +10,38 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IdentiqueOrgaos extends StatefulWidget {
-  const IdentiqueOrgaos({Key? key}) : super(key: key);
+  final EnumDificuldade dificuldade;
+  const IdentiqueOrgaos({Key? key, required this.dificuldade})
+      : super(key: key);
 
   @override
   State<IdentiqueOrgaos> createState() => _IdentiqueOrgaosState();
 }
 
 class _IdentiqueOrgaosState extends State<IdentiqueOrgaos> {
-  final _identifiqueOrgaosController =
-      IdentifiqueOrgaosController(EnumDificuldade.dificil);
+  late var _identifiqueOrgaosController =
+      IdentifiqueOrgaosController(EnumDificuldade.facil);
+
   List<EnumOrgaosIdentificar> selecionadosErrado = [];
-  late int tempoFinal;
+  late int tempoFinal = 0;
+
+  irParaPontuacaoFinal(int pontuacao) {
+    Navigator.pushReplacementNamed(context, '/final_jogo',
+        arguments: FinalizarJogoArgument('CAÇA-ORGÃOS', pontuacao));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _identifiqueOrgaosController =
+          IdentifiqueOrgaosController(widget.dificuldade);
+    });
+  }
 
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
-      _identifiqueOrgaosController.finalizarFase(1);
+      _identifiqueOrgaosController.finalizarFase(1, 0, 0);
     }
 
     const tempoMaximo = 120;
@@ -32,21 +49,21 @@ class _IdentiqueOrgaosState extends State<IdentiqueOrgaos> {
     tempoFinal = tempoMaximo - (animationValue * tempoMaximo).toInt();
   }
 
-  irParaPontuacaoFinal(int pontuacao) {
-    Navigator.pushReplacementNamed(context, '/final_jogo',
-        arguments: FinalizarJogoArgument('IDENTIFIQUE OS ÓRGÃOS', pontuacao));
-  }
-
   void selecaoBotao(EnumOrgaosIdentificar orgao) {
     if (_identifiqueOrgaosController.isOrgaoCorreto(orgao)) {
-      _identifiqueOrgaosController.finalizarFase(tempoFinal);
       SnackBar snackBar = const SnackBar(
         content: Text('Acertou! Parabéns!'),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      irParaPontuacaoFinal(
-          _identifiqueOrgaosController.calcularPontuacao(tempoFinal));
+      int pontos = _identifiqueOrgaosController.calcularPontuacao(tempoFinal);
+
+      _identifiqueOrgaosController.finalizarFase(
+        1,
+        pontos,
+        _identifiqueOrgaosController.dificuldade.getIdDificuldade(),
+      );
+      irParaPontuacaoFinal(pontos);
     } else {
       setState(() {
         selecionadosErrado.add(orgao);

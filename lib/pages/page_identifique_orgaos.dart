@@ -1,9 +1,12 @@
+import 'package:digeexplore/enums/enum_dificuldade.dart';
 import 'package:digeexplore/widgets/identifique_orgaos.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PageIdentifiqueOrgaos extends StatefulWidget {
-  const PageIdentifiqueOrgaos({Key? key}) : super(key: key);
+  final EnumDificuldade dificuldade;
+  const PageIdentifiqueOrgaos({Key? key, required this.dificuldade})
+      : super(key: key);
 
   @override
   State<PageIdentifiqueOrgaos> createState() => _PageIdentifiqueOrgaosState();
@@ -42,7 +45,7 @@ class _PageIdentifiqueOrgaosState extends State<PageIdentifiqueOrgaos> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'IDENTIFIQUE OS ÓRGÃOS',
+                    'CAÇA-ORGÃOS',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: Colors.white,
@@ -52,7 +55,7 @@ class _PageIdentifiqueOrgaosState extends State<PageIdentifiqueOrgaos> {
                   ),
                 ),
               ),
-              const IdentiqueOrgaos(),
+              IdentiqueOrgaos(dificuldade: widget.dificuldade),
             ],
           ),
         ),

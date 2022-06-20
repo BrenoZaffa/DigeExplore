@@ -8,20 +8,34 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Quiz extends StatefulWidget {
-  const Quiz({Key? key}) : super(key: key);
+  final EnumDificuldade dificuldade;
+  const Quiz({Key? key, required this.dificuldade}) : super(key: key);
 
   @override
   State<Quiz> createState() => _QuizState();
 }
 
 class _QuizState extends State<Quiz> {
-  final _quizController = QuizController(EnumDificuldade.facil);
+  late var _quizController = QuizController(EnumDificuldade.facil);
   List<String> alternativasErradas = [];
   late int tempoFinal;
 
+  irParaPontuacaoFinal(int pontuacao) {
+    Navigator.pushReplacementNamed(context, '/final_jogo',
+        arguments: FinalizarJogoArgument('QUIZ', pontuacao));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _quizController = QuizController(widget.dificuldade);
+    });
+  }
+
   atribuirTempo(double animationValue) {
     if (animationValue == 1) {
-      _quizController.finalizarFase(1);
+      _quizController.finalizarFase(1, 0, 0);
     }
 
     const tempoMaximo = 120;
@@ -31,13 +45,18 @@ class _QuizState extends State<Quiz> {
 
   void selecaoAlternativa(String alternativa) {
     if (_quizController.isAlternativaCorreta(alternativa)) {
-      _quizController.finalizarFase(tempoFinal);
       SnackBar snackBar = const SnackBar(
         content: Text('Acertou! Parabéns!'),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      irParaPontuacaoFinal(_quizController.calcularPontuacao(tempoFinal));
+      int pontos = _quizController.calcularPontuacao(tempoFinal);
+      _quizController.finalizarFase(
+        3,
+        pontos,
+        _quizController.dificuldade.getIdDificuldade(),
+      );
+      irParaPontuacaoFinal(pontos);
     } else {
       setState(() {
         alternativasErradas.add(alternativa);
@@ -49,11 +68,6 @@ class _QuizState extends State<Quiz> {
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
-  }
-
-  irParaPontuacaoFinal(int pontuacao) {
-    Navigator.pushReplacementNamed(context, '/final_jogo',
-        arguments: FinalizarJogoArgument('QUIZ', pontuacao));
   }
 
   Widget getAlternativa(String alternativa, String letra) {

@@ -23,22 +23,27 @@ class WidgetCabecalhoJogo extends StatelessWidget {
             onPressed: () {},
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Column(
-                children: [
-                  const Icon(
-                    Icons.question_mark,
-                    color: Colors.black87,
-                    size: 28,
-                  ),
-                  Text(
-                    'AJUDA',
-                    style: GoogleFonts.poppins(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed("/ajuda");
+                },
+                child: Column(
+                  children: [
+                    const Icon(
+                      Icons.question_mark,
                       color: Colors.black87,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      size: 28,
                     ),
-                  ),
-                ],
+                    Text(
+                      'AJUDA',
+                      style: GoogleFonts.poppins(
+                        color: Colors.black87,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

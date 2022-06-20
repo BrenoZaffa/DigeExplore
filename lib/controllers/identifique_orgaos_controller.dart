@@ -35,12 +35,12 @@ class IdentifiqueOrgaosController extends ControlarJogo {
     return orgao == _orgaoCorreto;
   }
 
-  @override
-  void finalizarFase(int tempoEmSegundos) {
-    int valorFinalPontuacao = calcularPontuacao(tempoEmSegundos);
+  // @override
+  // void finalizarFase(int tempoEmSegundos) {
+  //   int valorFinalPontuacao = calcularPontuacao(tempoEmSegundos);
 
-    // TODO SALVAR PONTUAÇÃO
-  }
+  //   // TODO SALVAR PONTUAÇÃO
+  // }
 
   @override
   void gerarFase() {

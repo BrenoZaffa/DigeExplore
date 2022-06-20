@@ -13,6 +13,14 @@ class PageHome extends StatelessWidget {
       Navigator.pushNamed(context, '/sobre');
     }
 
+    irParaAjuda() {
+      Navigator.pushNamed(context, '/ajuda');
+    }
+
+    irParaRanking() {
+      Navigator.pushNamed(context, '/ranking');
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xff073B4C),
       body: Padding(
@@ -39,6 +47,7 @@ class PageHome extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 70),
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.69,
+                    width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -80,7 +89,7 @@ class PageHome extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: irParaRanking,
                               child: Container(
                                 width: 300,
                                 height: 80,
@@ -110,7 +119,7 @@ class PageHome extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: irParaAjuda,
                               child: Container(
                                 width: 300,
                                 height: 80,

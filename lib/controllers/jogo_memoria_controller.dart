@@ -41,10 +41,10 @@ class JogoMemoriaController extends ControlarJogo {
     return orgao == _orgaoCorreto;
   }
 
-  @override
-  finalizarFase(int tempoEmSegundos) {
-    int valorFinalPontuacao = calcularPontuacao(tempoEmSegundos);
+  // @override
+  // finalizarFase(int tempoEmSegundos) {
+  //   int valorFinalPontuacao = calcularPontuacao(tempoEmSegundos);
 
-    // TODO SALVAR PONTUAÇÃO
-  }
+  //   // TODO SALVAR PONTUAÇÃO
+  // }
 }

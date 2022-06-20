@@ -26,8 +26,8 @@ class QuizController extends ControlarJogo {
     _alternativas = _pergunta.getAlternativasAleatorias(dificuldade);
   }
 
-  @override
-  void finalizarFase(int tempoEmSegundos) {
-    // TODO: implement finalizarFase
-  }
+  // @override
+  // void finalizarFase(int tempoEmSegundos) {
+  //   // TODO: implement finalizarFase
+  // }
 }

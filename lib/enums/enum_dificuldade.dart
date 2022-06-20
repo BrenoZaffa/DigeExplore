@@ -43,4 +43,15 @@ extension EnumDificuldadeExtension on EnumDificuldade {
   bool get isFacil => this == EnumDificuldade.facil;
 
   bool get isDificil => this == EnumDificuldade.dificil;
+
+  int getIdDificuldade() {
+    switch (this) {
+      case EnumDificuldade.facil:
+        return 1;
+      case EnumDificuldade.medio:
+        return 2;
+      case EnumDificuldade.dificil:
+        return 3;
+    }
+  }
 }

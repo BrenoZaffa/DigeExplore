@@ -1,5 +1,10 @@
+import 'package:digeexplore/enums/enum_dificuldade.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../pages/page_identifique_orgaos.dart';
+import '../pages/page_jogo_memoria.dart';
+import '../pages/page_quiz.dart';
 
 class WidgetMinigame extends StatelessWidget {
   final String minigame;
@@ -17,11 +22,38 @@ class WidgetMinigame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    irParaJogo() {
-      Navigator.pushReplacementNamed(context, jogoSelecionado);
-    }
-
     Future<void> _showMyDialog() async {
+      irParaJogo(EnumDificuldade dificuldade) {
+        // Navigator.pushReplacementNamed(context, jogoSelecionado, arguments: {
+        //   "dificuldade": dificuldade,
+        // });
+
+        String video = "";
+        switch (jogoSelecionado) {
+          case '/identifique_orgaos':
+            video = "tutorial_caca_orgao.mp4";
+            break;
+          case '/jogo_memoria':
+            video = "tutorial_memoria.mp4";
+            break;
+          case '/quiz':
+            video = "tutorial_quiz.mp4";
+            break;
+          default:
+        }
+
+        Navigator.of(context).pushNamed(
+          '/video_conteudo',
+          arguments: {
+            'title': minigame,
+            'color': corDestaque.toString(),
+            'diretory': "assets/videos/" + video,
+            'page': jogoSelecionado,
+            'dificuldade': dificuldade,
+          },
+        );
+      }
+
       return showDialog<void>(
         context: context,
         barrierDismissible: false, // user must tap button!
@@ -76,7 +108,7 @@ class WidgetMinigame extends StatelessWidget {
                             color: Color(0xFFFF006D),
                           ),
                         ),
-                        onPressed: irParaJogo,
+                        onPressed: () => irParaJogo(EnumDificuldade.facil),
                         child: Text(
                           'FÁCIL',
                           style: GoogleFonts.poppins(
@@ -101,7 +133,7 @@ class WidgetMinigame extends StatelessWidget {
                             color: Color(0xFFFF7D00),
                           ),
                         ),
-                        onPressed: irParaJogo,
+                        onPressed: () => irParaJogo(EnumDificuldade.medio),
                         child: Text(
                           'MÉDIO',
                           style: GoogleFonts.poppins(
@@ -126,7 +158,7 @@ class WidgetMinigame extends StatelessWidget {
                             color: Color(0xFF8F00FF),
                           ),
                         ),
-                        onPressed: irParaJogo,
+                        onPressed: () => irParaJogo(EnumDificuldade.dificil),
                         child: Text(
                           'DÍFICIL',
                           style: GoogleFonts.poppins(

@@ -1,4 +1,7 @@
+import 'package:digeexplore/class/partida.dart';
 import 'package:digeexplore/enums/enum_dificuldade.dart';
+
+import '../repositories/partida_repository.dart';
 
 abstract class ControlarJogo {
   int _quantidadeVidas = 3;
@@ -18,7 +21,7 @@ abstract class ControlarJogo {
       _quantidadeVidas--;
 
       if (_quantidadeVidas == 0) {
-        finalizarFase(0);
+        finalizarFase(0, 0, 0);
       }
     }
   }
@@ -28,11 +31,21 @@ abstract class ControlarJogo {
       tempoEmSegundos = _dificuldade.tempoBaseParaConclusao();
     }
 
-    return (tempoEmSegundos * dificuldade.pontosPorSegundo()).round() +
-        (dificuldade.pontosPorVida * _quantidadeVidas);
+    return (tempoEmSegundos * _dificuldade.pontosPorSegundo()).round() +
+        (_dificuldade.pontosPorVida * _quantidadeVidas);
   }
 
   void gerarFase();
 
-  void finalizarFase(int tempoEmSegundos);
+  void finalizarFase(int idMinigame, int pontos, int idDificuldade) {
+    if (idDificuldade != 0) {
+      PartidaRepository partidaRepository = PartidaRepository();
+      Partida partida = Partida(
+        idMinigame: idMinigame,
+        Dificuldade: idDificuldade,
+        Pontuacao_Total: pontos,
+      );
+      partidaRepository.insertPartida(partida);
+    }
+  }
 }

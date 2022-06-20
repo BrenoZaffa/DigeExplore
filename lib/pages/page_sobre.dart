@@ -9,7 +9,7 @@ class PageSobre extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff073B4C),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF8F00FF),
+        backgroundColor: const Color(0xff073B4C),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),

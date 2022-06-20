@@ -1,9 +1,12 @@
 import 'package:digeexplore/widgets/jogo_memoria.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../enums/enum_dificuldade.dart';
 
 class PageJogoMemoria extends StatefulWidget {
-  const PageJogoMemoria({Key? key}) : super(key: key);
+  final EnumDificuldade dificuldade;
+  const PageJogoMemoria({Key? key, required this.dificuldade})
+      : super(key: key);
 
   @override
   State<PageJogoMemoria> createState() => _PageJogoMemoriaState();
@@ -52,7 +55,7 @@ class _PageJogoMemoriaState extends State<PageJogoMemoria> {
                   ),
                 ),
               ),
-              const JogoMemoria(),
+              JogoMemoria(dificuldade: widget.dificuldade),
             ],
           ),
         ),

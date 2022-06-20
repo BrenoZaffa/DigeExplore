@@ -1,5 +1,6 @@
 import 'package:digeexplore/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class PageNome extends StatefulWidget {
@@ -21,6 +22,12 @@ class _PageNomeState extends State<PageNome> {
   );
 
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final form = GlobalKey<FormState>();
     final nomeUser = context.watch<UserRepository>();
@@ -28,6 +35,7 @@ class _PageNomeState extends State<PageNome> {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color(0xff073B4C),
         title: const Text('DigeExplore'),
       ),

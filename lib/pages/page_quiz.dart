@@ -1,9 +1,11 @@
+import 'package:digeexplore/enums/enum_dificuldade.dart';
 import 'package:digeexplore/widgets/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PageQuiz extends StatefulWidget {
-  const PageQuiz({Key? key}) : super(key: key);
+  final EnumDificuldade dificuldade;
+  const PageQuiz({Key? key, required this.dificuldade}) : super(key: key);
 
   @override
   State<PageQuiz> createState() => _PageQuizState();
@@ -52,7 +54,7 @@ class _PageQuizState extends State<PageQuiz> {
                   ),
                 ),
               ),
-              const Quiz(),
+              Quiz(dificuldade: widget.dificuldade),
             ],
           ),
         ),
